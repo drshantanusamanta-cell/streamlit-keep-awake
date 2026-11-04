@@ -1,0 +1,37 @@
+name: Keep Streamlit apps awake
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"   # every 6 hours (UTC)
+  workflow_dispatch:          # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Visit / wake every app
+        run: python keep_awake.py
+
+      - name: Heartbeat commit
+        if: always()
+        run: |
+          date -u +"%Y-%m-%d" > last_run.txt
+          git config user.name  "keep-awake-bot"
+          git config user.email "keep-awake-bot@users.noreply.github.com"
+          git add last_run.txt
+          git diff --cached --quiet || (git commit -m "heartbeat $(date -u +%F)" && git push)
