@@ -62,7 +62,9 @@ Edit the `cron` line in `.github/workflows/keep-awake.yml`. Times are **UTC** (I
 Just edit `apps.txt`. Lines starting with `#` are ignored, so you can comment an app out temporarily.
 
 ## Troubleshooting
-- **FAIL (timeout)** — the app may be crashing on start-up. Open it in your browser and check its logs on share.streamlit.io.
+- **Reading a run** — the run page shows a table: ✅ AWAKE (was up), ⏰ WOKE (was asleep, now up), ❌ FAIL with the reason. An app only counts as up once its page has actually loaded, and every failure is retried once a minute later before it is reported.
+- **FAIL: did not finish loading** — the app may be crashing on start-up. Open it in your browser and check its logs on share.streamlit.io.
+- **FAIL: Streamlit error page / app not found / could not download the repo** — the app was deleted or renamed, or its GitHub repo became private or was renamed. Check the URL in `apps.txt`, and the repo's visibility on GitHub.
 - **Workflow stopped running** — GitHub disables schedules after 60 days of no repo activity; the heartbeat commit prevents this. If it was disabled anyway, re-enable it in the Actions tab.
 - **Heartbeat step fails with permission error** — redo step 4.
 - **App still asleep** — wake it manually once, then check the URL in `apps.txt` matches exactly.
