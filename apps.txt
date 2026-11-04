@@ -1,0 +1,8 @@
+# One Streamlit app URL per line. Lines starting with # are ignored.
+# Replace these with your real app URLs.
+https://your-graham-scanner.streamlit.app/
+https://your-forward-matrix.streamlit.app/
+https://your-fair-value.streamlit.app/
+https://your-sector-rotation.streamlit.app/
+https://your-caaresa.streamlit.app/
+https://your-nifty-options.streamlit.app/
