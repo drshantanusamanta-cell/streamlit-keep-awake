@@ -7,3 +7,7 @@ https://shantanu-sector-rotation.streamlit.app/
 https://caaresa-scanner.streamlit.app/
 https://vijaya-nifty-dashboard.streamlit.app/
 https://shantanu-beta-calc.streamlit.app/
+https://diabetes-guide.streamlit.app/
+https://shantanu-diet-chart.streamlit.app/
+https://shantanu-mediscan.streamlit.app/
+https://shantanu-nifty-news.streamlit.app/
